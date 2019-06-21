@@ -9,10 +9,11 @@
 import UIKit
 
 class FlightsResultPageTableViewController: UITableViewController {
-
+    var presenter: FlightsResultPresenter = FlightsPresenter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter.loadFlights()
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

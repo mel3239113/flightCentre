@@ -1,17 +1,18 @@
 //
-//  flightCentreTaskTests.swift
+//  FlightResultsPresenterTests.swift
 //  flightCentreTaskTests
 //
-//  Created by Matthew Lewis on 6/21/19.
+//  Created by Matthew Lewis on 6/22/19.
 //  Copyright © 2019 Matthew Lewis. All rights reserved.
 //
 
 import XCTest
 @testable import flightCentreTask
 
-class flightCentreTaskTests: XCTestCase {
-
+class FlightResultsPresenterTests: XCTestCase {
+    var presenter: FlightsPresenter!
     override func setUp() {
+        presenter = FlightsPresenter()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 

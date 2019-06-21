@@ -12,25 +12,27 @@ struct FlightService {
     static let shared = FlightService()
     
     func request<T: Codable>(from endPoint: URL, completionHandler: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: endPoint) {(data, _, error) in
-            if let error = error {
-                completionHandler(.failure(error))
+        let urlRequest = URLRequest(url: endPoint)
+        URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completionHandler(.failure(error))
+                }
+                if let marshalledItem: T = self.marshalJSON(data: data) {
+                    completionHandler(.success(marshalledItem))
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "invalid format"])
+                    completionHandler(.failure(error))
+                }
             }
-            if let marshalledItem: T = self.marshalJSON(data: data) {
-                completionHandler(.success(marshalledItem))
-            } else {
-                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "invalid format"])
-                completionHandler(.failure(error))
-            }
-        }
+        }.resume()
     }
     
     
     private func marshalJSON<T: Codable>(data: Data?) -> T?  {
         guard let data = data else { return nil }
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: data)
-            let result = try JSONDecoder().decode(T.self, from: jsonData)
+            let result = try JSONDecoder().decode(T.self, from: data)
             return result
         } catch {
             return nil
