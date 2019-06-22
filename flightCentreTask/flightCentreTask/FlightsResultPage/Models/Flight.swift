@@ -29,7 +29,20 @@ struct Flight: Codable {
     }
     
     var readableDuration: String {
-        return ""
+        var readableString: String = scheduledDuration
+        let hours = "hr"
+        let mins = "min"
+        
+        if let hoursRange = readableString.range(of: hours) {
+            readableString.insert(" ", at: hoursRange.lowerBound)
+        }
+        if let hoursRange = readableString.range(of: hours) {
+            readableString.insert(" ", at: hoursRange.upperBound)
+        }
+        if let minsRange =  readableString.range(of: mins) {
+            readableString.insert(" ", at: minsRange.lowerBound)
+        }
+        return readableString
     }
 }
 
