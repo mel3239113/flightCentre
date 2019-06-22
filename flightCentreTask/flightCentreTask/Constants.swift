@@ -15,5 +15,6 @@ struct Constants {
     struct Colors {
         static let tableViewBackgroundGrey = UIColor(red: 0.9373, green: 0.9373, blue: 0.9569, alpha: 1.0) /* #efeff4 */
         static let flightCentreBlue = UIColor(red: 0, green: 0.2824, blue: 0.7176, alpha: 1.0) /* #0048b7 */
+        static let flightCentreGrey = UIColor(red: 0.4471, green: 0.4471, blue: 0.4471, alpha: 1.0) /* #727272 */
     }
 }

@@ -63,6 +63,20 @@ extension FlightResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return presenter.flightSection(at: section).displayDate
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        view.backgroundColor = Constants.Colors.tableViewBackgroundGrey
+        let dateLabel = UILabel()
+        dateLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+        dateLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        dateLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        dateLabel.textColor = Constants.Colors.flightCentreGrey
+        dateLabel.backgroundColor = Constants.Colors.tableViewBackgroundGrey
+        let headerView = UIView()
+        headerView.backgroundColor = Constants.Colors.tableViewBackgroundGrey
+        headerView.addSubview(dateLabel)
+        return headerView
+    }
 }
 
 extension FlightResultsViewController: FlightSearchUpdateable {

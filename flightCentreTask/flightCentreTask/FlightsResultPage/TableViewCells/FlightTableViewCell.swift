@@ -24,6 +24,7 @@ class FlightTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         planeImage.image = planeImage.image?.withRenderingMode(.alwaysTemplate)
         planeImage.tintColor = Constants.Colors.flightCentreBlue
+        backgroundColor = Constants.Colors.tableViewBackgroundGrey
         // Initialization code
     }
     
