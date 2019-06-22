@@ -28,6 +28,9 @@ struct Flight: Codable {
         case arrivalDate = "arrival_date"
     }
     
+    var departDayMonthYear: String {
+        return departureDate.displayDateString(for: .yearMonthDay) ?? ""
+    }
     var readableDuration: String {
         var readableString: String = scheduledDuration
         let hours = "hr"
@@ -45,28 +48,3 @@ struct Flight: Codable {
         return readableString
     }
 }
-
-enum TimeFormat: String {
-    case displayDay = "E, dd MMM"
-    case tweleHourTime = "hh:mm a"
-    case twentyFourHourTime = "HH:mm"
-}
-
-extension String {
-    
-    func displayDateString(for format: TimeFormat) -> String? {
-        guard let date = date else { return nil }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  format.rawValue
-        return dateFormatter.string(from: date)
-        
-    }
-    
-    var date: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        return dateFormatter.date(from: self)
-    }
-    
-}
-

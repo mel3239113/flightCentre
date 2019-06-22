@@ -22,6 +22,10 @@
 		834002A822BDAAC10050E7F1 /* MockFlightResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 834002A722BDAAC10050E7F1 /* MockFlightResults.json */; };
 		834002A922BDB1A90050E7F1 /* MockFlightResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 834002A722BDAAC10050E7F1 /* MockFlightResults.json */; };
 		834002AB22BDB2550050E7F1 /* FlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834002AA22BDB2550050E7F1 /* FlightTests.swift */; };
+		834002AD22BDC7360050E7F1 /* FlightSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834002AC22BDC7360050E7F1 /* FlightSection.swift */; };
+		834002B022BDF0C80050E7F1 /* String-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834002AF22BDF0C80050E7F1 /* String-extensions.swift */; };
+		834002B422BDF1750050E7F1 /* FlightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834002B222BDF1750050E7F1 /* FlightTableViewCell.swift */; };
+		834002B522BDF1750050E7F1 /* FlightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 834002B322BDF1750050E7F1 /* FlightTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		834002A522BDA6450050E7F1 /* FlightResultsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightResultsPresenterTests.swift; sourceTree = "<group>"; };
 		834002A722BDAAC10050E7F1 /* MockFlightResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockFlightResults.json; sourceTree = "<group>"; };
 		834002AA22BDB2550050E7F1 /* FlightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTests.swift; sourceTree = "<group>"; };
+		834002AC22BDC7360050E7F1 /* FlightSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSection.swift; sourceTree = "<group>"; };
+		834002AF22BDF0C80050E7F1 /* String-extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-extensions.swift"; sourceTree = "<group>"; };
+		834002B222BDF1750050E7F1 /* FlightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTableViewCell.swift; sourceTree = "<group>"; };
+		834002B322BDF1750050E7F1 /* FlightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlightTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 		8340026522BCEE860050E7F1 /* flightCentreTask */ = {
 			isa = PBXGroup;
 			children = (
+				834002AE22BDF0B30050E7F1 /* Util */,
 				8340029822BD90F40050E7F1 /* FlightsResultPage */,
 				8340029522BD90B90050E7F1 /* Services */,
 				8340026622BCEE860050E7F1 /* AppDelegate.swift */,
@@ -156,6 +165,7 @@
 		8340029822BD90F40050E7F1 /* FlightsResultPage */ = {
 			isa = PBXGroup;
 			children = (
+				834002B122BDF1650050E7F1 /* TableViewCells */,
 				8340029B22BD91270050E7F1 /* Presenter */,
 				8340029A22BD911D0050E7F1 /* Controllers */,
 				8340029922BD91090050E7F1 /* Models */,
@@ -167,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				8340029E22BD93530050E7F1 /* Flight.swift */,
+				834002AC22BDC7360050E7F1 /* FlightSection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +196,23 @@
 				834002A022BD989F0050E7F1 /* FlightsResultPagePresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		834002AE22BDF0B30050E7F1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				834002AF22BDF0C80050E7F1 /* String-extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		834002B122BDF1650050E7F1 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				834002B222BDF1750050E7F1 /* FlightTableViewCell.swift */,
+				834002B322BDF1750050E7F1 /* FlightTableViewCell.xib */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834002B522BDF1750050E7F1 /* FlightTableViewCell.xib in Resources */,
 				834002A922BDB1A90050E7F1 /* MockFlightResults.json in Resources */,
 				8340027122BCEE880050E7F1 /* LaunchScreen.storyboard in Resources */,
 				8340026E22BCEE880050E7F1 /* Assets.xcassets in Resources */,
@@ -325,8 +354,11 @@
 				834002A122BD989F0050E7F1 /* FlightsResultPagePresenter.swift in Sources */,
 				8340026922BCEE860050E7F1 /* ViewController.swift in Sources */,
 				834002A422BD9DD20050E7F1 /* Constants.swift in Sources */,
+				834002AD22BDC7360050E7F1 /* FlightSection.swift in Sources */,
+				834002B022BDF0C80050E7F1 /* String-extensions.swift in Sources */,
 				8340029F22BD93530050E7F1 /* Flight.swift in Sources */,
 				8340026722BCEE860050E7F1 /* AppDelegate.swift in Sources */,
+				834002B422BDF1750050E7F1 /* FlightTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

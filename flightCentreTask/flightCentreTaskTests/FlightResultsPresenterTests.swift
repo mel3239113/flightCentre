@@ -19,8 +19,27 @@ class FlightResultsPresenterTests: XCTestCase {
     
     func testCalculateSectionCount() {
         presenter.loadFlights()
-        let sections = presenter.sections()
-        XCTAssertEqual(sections, 5)
+        XCTAssertEqual(presenter.sections, 15)
+        
+    }
+    
+    func testSegmentFlightsIntoSections() {
+        presenter.loadFlights()
+        let flights =  presenter.findFlights(with: "2018-01-01")
+        XCTAssertEqual(flights.count, 3)
+    }
+    
+    func testFlightSectionsSorting() {
+        let flightSectionOne = FlightSection(flights: [], dayDateString: "2018-12-10")
+        let flightSectionTwo = FlightSection(flights: [], dayDateString: "2018-12-11")
+        let flightSectionThree = FlightSection(flights: [], dayDateString: "2018-12-12")
+        let flightSections: [FlightSection] = [flightSectionTwo, flightSectionOne, flightSectionThree ]
+        
+        let orderSections = presenter.ordered(unorderFlightSections: flightSections)
+        XCTAssertEqual(orderSections[0].dayDateString, "2018-12-10")
+    }
+    
+    func testFlightsOrderedInSection() {
         
     }
 }
