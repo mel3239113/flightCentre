@@ -9,7 +9,9 @@
 import UIKit
 
 class FlightsResultPageTableViewController: UITableViewController {
-    var presenter: FlightsResultPresenter = FlightsPresenter()
+    
+    //inject the flight service to keep it modula incase services change and allows mocking in tests
+    var presenter: FlightsResultPresenter = FlightsPresenter(flightService: FlightService.shared)
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.loadFlights()

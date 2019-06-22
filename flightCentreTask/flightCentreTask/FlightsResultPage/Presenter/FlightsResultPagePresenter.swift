@@ -10,16 +10,23 @@ import Foundation
 
 protocol FlightsResultPresenter {
     func loadFlights()
+    func sections(for flights: [Flight]) -> Int
 
 }
 
 class FlightsPresenter: FlightsResultPresenter {
+    private let flightService: FlightSearchService
     private var flights: Flights = []
+
+    
+    init (flightService: FlightSearchService) {
+        self.flightService = flightService
+    }
     
     func loadFlights() {
         guard let url = URL(string: Constants.flightEndPoint) else { return }
         
-        FlightService.shared.request(from: url) { [weak self] (result: Result<Flights, Error>) in
+        flightService.request(from: url) { [weak self] (result: Result<Flights, Error>) in
             switch result {
             case .success(let flights):
                 self?.flights = flights
@@ -27,5 +34,10 @@ class FlightsPresenter: FlightsResultPresenter {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func sections() -> Int {
+        
+        return 0
     }
 }

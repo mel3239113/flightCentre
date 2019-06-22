@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct FlightService {
+protocol FlightSearchService {
+    func request<T: Codable>(from endPoint: URL, completionHandler: @escaping (Result<T, Error>) -> Void)
+}
+
+struct FlightService: FlightSearchService {
     static let shared = FlightService()
     
     func request<T: Codable>(from endPoint: URL, completionHandler: @escaping (Result<T, Error>) -> Void) {

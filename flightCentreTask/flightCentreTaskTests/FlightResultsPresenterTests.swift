@@ -11,25 +11,31 @@ import XCTest
 
 class FlightResultsPresenterTests: XCTestCase {
     var presenter: FlightsPresenter!
+    var flights: [Flight] = []
     override func setUp() {
-        presenter = FlightsPresenter()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let mockFlightSearchService = MockFlightService()
+        presenter = FlightsPresenter(flightService: mockFlightSearchService)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testCalculateSectionCount() {
+        presenter.loadFlights()
+        let sections = presenter.sections()
+        XCTAssertEqual(sections, 5)
+        
     }
+}
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+struct MockFlightService: FlightSearchService {
+    func request<Flights: Codable>(from endPoint: URL, completionHandler: @escaping (Result<Flights, Error>) -> Void) {
+        if let path = Bundle.main.path(forResource: "MockFlightResults", ofType: "json") {
+            let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let flights = try! JSONDecoder().decode(Flights.self, from: data)
+            completionHandler(.success(flights))
         }
+      
     }
-
+    
+    
+    
+    
 }
