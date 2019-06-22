@@ -8,6 +8,7 @@
 
 import Foundation
 
+typealias Flights = [Flight]
 struct Flight: Codable {
     let id: Int
     let departureDate, airlineCode, flightNumber, departureCity: String
@@ -30,21 +31,22 @@ struct Flight: Codable {
     var readableDuration: String {
         return ""
     }
-    
+}
+
+enum TimeFormat: String {
+    case displayDay = "E, dd MMM"
+    case tweleHourTime = "hh:mm a"
+    case twentyFourHourTime = "HH:mm"
 }
 
 extension String {
     
-    var displayDay: String {
-        return ""
-    }
-    
-    var display12HourTime: String {
-        return ""
-    }
-    
-    var display24HourTime: String {
-        return ""
+    func displayDateString(for format: TimeFormat) -> String? {
+        guard let date = date else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  format.rawValue
+        return dateFormatter.string(from: date)
+        
     }
     
     var date: Date? {
@@ -55,4 +57,3 @@ extension String {
     
 }
 
-typealias Flights = [Flight]

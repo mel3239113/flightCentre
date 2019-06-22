@@ -23,19 +23,19 @@ class FlightTests: XCTestCase {
     }
     
     func testFlightReadableDayDate() {
-        XCTAssertEqual(flight.departureDate.displayDay, "Sat 01 Jan")
+        XCTAssertEqual(flight.departureDate.displayDateString(for: .displayDay), "Mon, 01 Jan")
     }
     
     func testFlightReadable12HourTime() {
-        XCTAssertEqual(flight.departureDate.display12HourTime, "09:45 PM")
+        XCTAssertEqual(flight.departureDate.displayDateString(for: .tweleHourTime), "09:45 PM")
     }
     
     func testFlightReadable24HourTime() {
-        XCTAssertEqual(flight.departureDate.display24HourTime, "21:45")
+        XCTAssertEqual(flight.departureDate.displayDateString(for: .twentyFourHourTime), "21:45")
 
     }
     
-    func flighTestReadableDuration() {
+    func testReadableDuration() {
         XCTAssertEqual(flight.readableDuration,"1 hr 11 min" )
     }
 
