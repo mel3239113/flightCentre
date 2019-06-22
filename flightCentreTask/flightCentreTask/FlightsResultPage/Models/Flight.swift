@@ -26,6 +26,33 @@ struct Flight: Codable {
         case scheduledDuration = "scheduled_duration"
         case arrivalDate = "arrival_date"
     }
+    
+    var readableDuration: String {
+        return ""
+    }
+    
+}
+
+extension String {
+    
+    var displayDay: String {
+        return ""
+    }
+    
+    var display12HourTime: String {
+        return ""
+    }
+    
+    var display24HourTime: String {
+        return ""
+    }
+    
+    var date: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        return dateFormatter.date(from: self)
+    }
+    
 }
 
 typealias Flights = [Flight]

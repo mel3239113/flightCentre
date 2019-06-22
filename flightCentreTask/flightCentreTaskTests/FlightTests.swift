@@ -10,25 +10,34 @@ import XCTest
 @testable import flightCentreTask
 
 class FlightTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
+    let flight = Flight(id: 9, departureDate: "2018-01-01T21:45:00.000", airlineCode: "AC", flightNumber: "8125", departureCity: "Vancouver, Canada", departureAirport: "YVR", arrivalCity: "Portland, United States", arrivalAirport: "PDX", scheduledDuration: "1hr11min", arrivalDate: "2018-01-01T22:56:00.000")
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testParsingStringToDate() {
+        XCTAssertNotNil(flight.departureDate.date)
     }
+    
+    func testFlightReadableDayDate() {
+        XCTAssertEqual(flight.departureDate.displayDay, "Sat 01 Jan")
+    }
+    
+    func testFlightReadable12HourTime() {
+        XCTAssertEqual(flight.departureDate.display12HourTime, "09:45 PM")
+    }
+    
+    func testFlightReadable24HourTime() {
+        XCTAssertEqual(flight.departureDate.display24HourTime, "21:45")
+
+    }
+    
+    func flighTestReadableDuration() {
+        XCTAssertEqual(flight.readableDuration,"1 hr 11 min" )
+    }
+
 
 }

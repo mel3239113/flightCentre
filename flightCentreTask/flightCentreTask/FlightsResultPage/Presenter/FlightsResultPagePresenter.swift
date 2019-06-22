@@ -10,7 +10,7 @@ import Foundation
 
 protocol FlightsResultPresenter {
     func loadFlights()
-    func sections(for flights: [Flight]) -> Int
+    func sections() -> Int
 
 }
 
