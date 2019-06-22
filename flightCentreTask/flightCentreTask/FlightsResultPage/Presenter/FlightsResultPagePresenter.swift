@@ -14,8 +14,6 @@ protocol FlightsResultPresenter: class {
     func flightSection(at section: Int) -> FlightSection
     func flight(at section: Int, for row: Int) -> Flight
     var sections: Int { get }
-    
-    
 }
 
 class FlightsPresenter: FlightsResultPresenter {

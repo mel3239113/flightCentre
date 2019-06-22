@@ -7,27 +7,47 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Trips-->
-        <scene sceneID="xAP-H1-Rj8">
+        <scene sceneID="KnR-K4-7fz">
             <objects>
-                <tableViewController id="4d7-WX-U9Q" customClass="FlightsResultPageTableViewController" customModule="flightCentreTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7f5-Kj-ktk">
+                <viewController id="FGg-Md-fjm" customClass="FlightResultsViewController" customModule="flightCentreTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gSD-rB-nIx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="4d7-WX-U9Q" id="VGt-xs-fUL"/>
-                            <outlet property="delegate" destination="4d7-WX-U9Q" id="5Bn-Yk-6CG"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Trips" id="fDd-d6-V8p"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0tX-Hu-JGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y2R-Kq-Cdx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xv9-sY-Qwf">
+                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <color key="color" name="FlightCentreRed"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UJY-dF-aMa" firstAttribute="bottom" secondItem="y2R-Kq-Cdx" secondAttribute="bottom" id="IyD-ss-3P6"/>
+                            <constraint firstItem="UJY-dF-aMa" firstAttribute="trailing" secondItem="y2R-Kq-Cdx" secondAttribute="trailing" id="QfA-fS-ieS"/>
+                            <constraint firstItem="xv9-sY-Qwf" firstAttribute="centerX" secondItem="UJY-dF-aMa" secondAttribute="centerX" id="c4F-gE-mdH"/>
+                            <constraint firstItem="y2R-Kq-Cdx" firstAttribute="leading" secondItem="UJY-dF-aMa" secondAttribute="leading" id="lYS-hH-s28"/>
+                            <constraint firstItem="xv9-sY-Qwf" firstAttribute="centerY" secondItem="UJY-dF-aMa" secondAttribute="centerY" id="lsi-aB-ai5"/>
+                            <constraint firstItem="y2R-Kq-Cdx" firstAttribute="top" secondItem="UJY-dF-aMa" secondAttribute="top" id="nh0-1Z-eml"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UJY-dF-aMa"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Trips" id="NR4-Sr-sTw"/>
+                    <connections>
+                        <outlet property="activityView" destination="xv9-sY-Qwf" id="DEz-tE-WsX"/>
+                        <outlet property="tableView" destination="y2R-Kq-Cdx" id="hvN-Q1-Kmj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mb-Ib-1Ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065.217391304348" y="106.47321428571428"/>
+            <point key="canvasLocation" x="1057" y="125"/>
         </scene>
         <!--Trips-->
         <scene sceneID="13c-Fx-tza">
@@ -37,7 +57,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0F6-eB-e6U">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="flightCentreRed"/>
+                        <color key="barTintColor" name="FlightCentreRed"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,7 +65,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4d7-WX-U9Q" kind="relationship" relationship="rootViewController" id="dDO-tq-PZC"/>
+                        <segue destination="FGg-Md-fjm" kind="relationship" relationship="rootViewController" id="lQw-Wu-GHh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAc-Fm-b6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -54,7 +74,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="flightCentreRed">
+        <namedColor name="FlightCentreRed">
             <color red="0.83137254901960789" green="0.0039215686274509803" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -28,6 +28,35 @@ struct Flight: Codable {
         case arrivalDate = "arrival_date"
     }
     
+//    var isInternationl: Bool {
+//
+//    }
+//
+//    var arrivalCityShort: String {
+//
+//    }
+//
+//    var departureCityShort: String {
+//
+//    }
+//
+//    var arrivalCountry: String {
+//
+//    }
+//
+//    var departureCountry: String {
+//
+//    }
+    
+    func country(for flightPoint: String) -> String {
+        if let range = flightPoint.range(of: ",") {
+            
+        }
+        
+        return ""
+    }
+    
+    
     var departDayMonthYear: String {
         return departureDate.displayDateString(for: .yearMonthDay) ?? ""
     }
