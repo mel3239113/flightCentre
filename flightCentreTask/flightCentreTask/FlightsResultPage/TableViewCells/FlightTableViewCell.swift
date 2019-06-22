@@ -28,16 +28,22 @@ class FlightTableViewCell: UITableViewCell {
     }
     
     func update(with flight: Flight) {
+        
         departDetails.airportLabel.text = flight.departureAirport
-        departDetails.cityLabel.text = flight.departureCity
+        departDetails.cityLabel.text = flight.flightPoint(details: .departure, location: .city)
         departDetails.timeLabel.text = flight.departureDate.displayDateString(for: .twentyFourHourTime)
         
         arrivalDetails.airportLabel.text = flight.arrivalAirport
-        arrivalDetails.cityLabel.text = flight.arrivalCity
+        arrivalDetails.cityLabel.text = flight.flightPoint(details: .arrival, location: .city)
         arrivalDetails.timeLabel.text = flight.arrivalDate.displayDateString(for: .twentyFourHourTime)
         
-        destinationCityLabel.text = flight.arrivalCity
+        if flight.isInternationl {
+            destinationCityLabel.text = "Flight To \(flight.flightPoint(details: .arrival, location: .country))"
+        }else{
+            destinationCityLabel.text = "Flight To \(flight.flightPoint(details: .arrival, location: .city))"
+        }
         
+        durationLabel.text = flight.readableDuration
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

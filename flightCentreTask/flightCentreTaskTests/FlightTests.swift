@@ -38,6 +38,32 @@ class FlightTests: XCTestCase {
     func testReadableDuration() {
         XCTAssertEqual(flight.readableDuration,"1 hr 11 min" )
     }
+    
+    func testFindDepartureCountry() {
+        XCTAssertEqual(flight.flightPoint(details: .departure, location: .country), "Canada")
+    }
+    
+    func testFindArrivalCountry() {
+        XCTAssertEqual(flight.flightPoint(details: .arrival, location: .country), "United States")
+    }
+    
+    func testFindArrivalCity() {
+        XCTAssertEqual(flight.flightPoint(details: .arrival, location: .city), "Portland")
+    }
+    
+    func testFindDepartureCity() {
+        XCTAssertEqual(flight.flightPoint(details: .departure, location: .city), "Vancouver")
+    }
+    
+    func testIsInternation() {
+        XCTAssertTrue(flight.isInternationl)
+    }
+    
+    func testDomesticFlight() {
+            let domestic = Flight(id: 9, departureDate: "2018-01-01T21:45:00.000", airlineCode: "AC", flightNumber: "8125", departureCity: "New york, United States", departureAirport: "YVR", arrivalCity: "Portland, United States", arrivalAirport: "PDX", scheduledDuration: "1hr11min", arrivalDate: "2018-01-01T22:56:00.000")
+        XCTAssertFalse(domestic.isInternationl)
+    }
+
 
 
 }

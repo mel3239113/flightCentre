@@ -9,6 +9,17 @@
 import Foundation
 
 typealias Flights = [Flight]
+
+enum FlightPointType {
+    case arrival
+    case departure
+}
+
+enum LocationType {
+    case city
+    case country
+}
+
 struct Flight: Codable {
     let id: Int
     let departureDate, airlineCode, flightNumber, departureCity: String
@@ -28,38 +39,17 @@ struct Flight: Codable {
         case arrivalDate = "arrival_date"
     }
     
-//    var isInternationl: Bool {
-//
-//    }
-//
-//    var arrivalCityShort: String {
-//
-//    }
-//
-//    var departureCityShort: String {
-//
-//    }
-//
-//    var arrivalCountry: String {
-//
-//    }
-//
-//    var departureCountry: String {
-//
-//    }
-    
-    func country(for flightPoint: String) -> String {
-        if let range = flightPoint.range(of: ",") {
-            
+    var isInternationl: Bool {
+        if flightPoint(details: .arrival, location: .country) == flightPoint(details: .departure, location: .country) {
+            return false
         }
-        
-        return ""
+        return true
     }
-    
     
     var departDayMonthYear: String {
         return departureDate.displayDateString(for: .yearMonthDay) ?? ""
     }
+    
     var readableDuration: String {
         var readableString: String = scheduledDuration
         let hours = "hr"
@@ -75,5 +65,19 @@ struct Flight: Codable {
             readableString.insert(" ", at: minsRange.lowerBound)
         }
         return readableString
+    }
+    
+    func flightPoint(details flightPoint: FlightPointType, location: LocationType) -> String {
+        var point: String
+        switch flightPoint {
+        case .arrival: point = arrivalCity
+        case .departure: point = departureCity
+        }
+        let cityAndCountry = point.components(separatedBy: ", ")
+        
+        switch location {
+        case .city: return cityAndCountry[0]
+        case .country: return cityAndCountry[1]
+        }
     }
 }
