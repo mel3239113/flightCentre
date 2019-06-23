@@ -64,6 +64,15 @@ extension FlightResultsViewController: UITableViewDataSource {
         return presenter.flightSection(at: section).displayDate
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let flight = presenter.flight(at: indexPath.section, for: indexPath.row)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let flightDetailVC = storyboard.instantiateViewController(withIdentifier: "FlightDetailViewController") as? FlightDetailViewController {
+            flightDetailVC.presenter.load(flight: flight)
+            navigationController?.pushViewController(flightDetailVC, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         view.backgroundColor = Constants.Colors.tableViewBackgroundGrey
         let dateLabel = UILabel()

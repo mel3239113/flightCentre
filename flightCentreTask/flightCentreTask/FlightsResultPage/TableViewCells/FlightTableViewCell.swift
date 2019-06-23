@@ -31,7 +31,8 @@ class FlightTableViewCell: UITableViewCell {
         planeImage.image = planeImage.image?.withRenderingMode(.alwaysTemplate)
         planeImage.tintColor = Constants.Colors.flightCentreBlue
         backgroundColor = Constants.Colors.tableViewBackgroundGrey
-        
+        blueDashedLineLeft.dashColor = Constants.Colors.flightCentreBlue
+        blueDashedLineRight.dashColor = Constants.Colors.flightCentreBlue
         leftCircle.addCircle(with: Constants.Colors.flightCentreBlue)
         rightCircle.addCircle(with: Constants.Colors.flightCentreBlue)
     }

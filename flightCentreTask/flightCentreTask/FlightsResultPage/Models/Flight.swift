@@ -50,6 +50,10 @@ struct Flight: Codable {
         return departureDate.displayDateString(for: .yearMonthDay) ?? ""
     }
     
+    var flightCode: String {
+        return " \(airlineCode)\(flightNumber)"
+    }
+    
     var readableDuration: String {
         var readableString: String = scheduledDuration
         let hours = "hr"

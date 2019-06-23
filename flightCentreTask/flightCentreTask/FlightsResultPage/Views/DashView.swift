@@ -9,9 +9,12 @@
 import UIKit
 
 class DashView: UIView {
+    var dashColor: UIColor?
     
     override func layoutSubviews() {
-        addDashLines(with: Constants.Colors.flightCentreBlue)
+        if let dashColor = dashColor {
+            addDashLines(with: dashColor)
+        }
     }
 
 

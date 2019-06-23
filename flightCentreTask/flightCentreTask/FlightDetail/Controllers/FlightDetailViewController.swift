@@ -9,22 +9,39 @@
 import UIKit
 
 class FlightDetailViewController: UIViewController {
-
+    @IBOutlet weak var dashLine: DashView!
+    
+    @IBOutlet weak var airportDepartureLabel: UILabel!
+    @IBOutlet weak var cityDepartureLabel: UILabel!
+    @IBOutlet weak var dayDepartureLabel: UILabel!
+    @IBOutlet weak var departureTimeLabel: UILabel!
+    
+    @IBOutlet weak var airportArrival: UILabel!
+    @IBOutlet weak var cityArrivalLabel: UILabel!
+    @IBOutlet weak var dayArrivalLabel: UILabel!
+    @IBOutlet weak var arrivalTimeLabel: UILabel!
+    
+    @IBOutlet weak var flightCodeLabel: UILabel!
+    
+    let presenter: FlightDetailPresenter = FlightDetailPresenter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let flight = presenter.flight {
+            airportDepartureLabel.text = flight.departureAirport
+            cityDepartureLabel.text = flight.flightPoint(details: .departure, location: .city)
+            dayDepartureLabel.text = flight.departureDate.displayDateString(for: .displayDay)
+            departureTimeLabel.text = flight.departureDate.displayDateString(for: .tweleHourTime)
+            
+            airportArrival.text = flight.arrivalAirport
+            cityArrivalLabel.text = flight.flightPoint(details: .arrival, location: .city)
+            dayArrivalLabel.text = flight.arrivalDate.displayDateString(for: .displayDay)
+            arrivalTimeLabel.text = flight.arrivalDate.displayDateString(for: .tweleHourTime)
+            
+            flightCodeLabel.text = flight.flightCode
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
