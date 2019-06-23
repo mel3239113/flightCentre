@@ -18,18 +18,17 @@ class FlightTableViewCell: UITableViewCell {
     @IBOutlet weak var planeImage: UIImageView!
     @IBOutlet weak var departDetails: FlightPoint!
     @IBOutlet weak var arrivalDetails: FlightPoint!
-
+    @IBOutlet weak var blueDashedLine: DashView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         planeImage.image = planeImage.image?.withRenderingMode(.alwaysTemplate)
         planeImage.tintColor = Constants.Colors.flightCentreBlue
         backgroundColor = Constants.Colors.tableViewBackgroundGrey
-        // Initialization code
     }
-    
-    func update(with flight: Flight) {
         
+    func update(with flight: Flight) {
         departDetails.airportLabel.text = flight.departureAirport
         departDetails.cityLabel.text = flight.flightPoint(details: .departure, location: .city)
         departDetails.timeLabel.text = flight.departureDate.displayDateString(for: .twentyFourHourTime)
@@ -49,8 +48,6 @@ class FlightTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
