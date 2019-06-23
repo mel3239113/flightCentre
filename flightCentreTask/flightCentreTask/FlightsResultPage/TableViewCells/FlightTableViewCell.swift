@@ -18,7 +18,9 @@ class FlightTableViewCell: UITableViewCell {
     @IBOutlet weak var planeImage: UIImageView!
     @IBOutlet weak var departDetails: FlightPoint!
     @IBOutlet weak var arrivalDetails: FlightPoint!
-    @IBOutlet weak var blueDashedLine: DashView!
+    @IBOutlet weak var blueDashedLineLeft: DashView!
+    @IBOutlet weak var blueDashedLineRight: DashView!
+
     
     @IBOutlet weak var leftCircle: UIView!
     @IBOutlet weak var rightCircle: UIView!
