@@ -11,11 +11,11 @@ import UIKit
 
 extension UIView {
     
-    func addDashLines(with color: UIColor) {
+    func addDashLines(with color: UIColor, pattern: [NSNumber] = [2,5]) {
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.lineWidth = 2
-        shapeLayer.lineDashPattern = [2,5]
+        shapeLayer.lineDashPattern = pattern
     
         let path = CGMutablePath()
         path.addLines(between: [CGPoint(x: 0, y: 0), CGPoint(x: self.frame.width, y: 0)])

@@ -9,7 +9,7 @@
 import UIKit
 
 class FlightDetailViewController: UIViewController {
-    @IBOutlet weak var dashLine: DashView!
+    @IBOutlet weak var dashLine: UIView!
     
     @IBOutlet weak var airportDepartureLabel: UILabel!
     @IBOutlet weak var cityDepartureLabel: UILabel!
@@ -26,7 +26,7 @@ class FlightDetailViewController: UIViewController {
     let presenter: FlightDetailPresenter = FlightDetailPresenter()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dashLine.addDashLines(with: Constants.Colors.flightCentreGrey, pattern: [5,10])
         if let flight = presenter.flight {
             airportDepartureLabel.text = flight.departureAirport
             cityDepartureLabel.text = flight.flightPoint(details: .departure, location: .city)

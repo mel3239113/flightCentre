@@ -256,6 +256,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJe-L1-THZ" userLabel="qrContainer" customClass="DashView" customModule="flightCentreTask" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="435" width="390" height="215"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJh-gW-eFH">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="10"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="aAk-an-SCh"/>
+                                                </constraints>
+                                            </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrCode" translatesAutoresizingMaskIntoConstraints="NO" id="rrL-d9-TAD">
                                                 <rect key="frame" x="140" y="52.5" width="110" height="110"/>
                                                 <constraints>
@@ -266,7 +273,10 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="rrL-d9-TAD" firstAttribute="centerX" secondItem="lJe-L1-THZ" secondAttribute="centerX" id="KTH-tR-qyC"/>
+                                            <constraint firstItem="nJh-gW-eFH" firstAttribute="top" secondItem="lJe-L1-THZ" secondAttribute="top" id="MQT-jb-Ijj"/>
+                                            <constraint firstItem="nJh-gW-eFH" firstAttribute="leading" secondItem="lJe-L1-THZ" secondAttribute="leading" id="fhs-NF-r4g"/>
                                             <constraint firstItem="rrL-d9-TAD" firstAttribute="centerY" secondItem="lJe-L1-THZ" secondAttribute="centerY" id="iXL-bW-4C7"/>
+                                            <constraint firstAttribute="trailing" secondItem="nJh-gW-eFH" secondAttribute="trailing" id="zPb-Gf-BXl"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -321,6 +331,7 @@
                         <outlet property="arrivalTimeLabel" destination="cot-Wu-ohi" id="osI-HO-U0w"/>
                         <outlet property="cityArrivalLabel" destination="FYy-y1-jfH" id="Hlu-0a-TO5"/>
                         <outlet property="cityDepartureLabel" destination="2Ce-8V-dY6" id="mbo-fn-Pcu"/>
+                        <outlet property="dashLine" destination="nJh-gW-eFH" id="KJM-xn-z3B"/>
                         <outlet property="dayArrivalLabel" destination="5XY-g0-885" id="0yh-jf-PVn"/>
                         <outlet property="dayDepartureLabel" destination="8Mr-Yf-KM8" id="n4X-u6-gtx"/>
                         <outlet property="departureTimeLabel" destination="hRA-qf-yvc" id="s3g-ds-fMG"/>
