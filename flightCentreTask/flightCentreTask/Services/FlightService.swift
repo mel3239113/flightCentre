@@ -12,9 +12,10 @@ protocol FlightSearchService {
     func request<T: Codable>(from endPoint: URL, completionHandler: @escaping (Result<T, Error>) -> Void)
 }
 
+
 struct FlightService: FlightSearchService {
     static let shared = FlightService()
-    
+        //i used generics here so this could be used for other expected object types
     func request<T: Codable>(from endPoint: URL, completionHandler: @escaping (Result<T, Error>) -> Void) {
         let urlRequest = URLRequest(url: endPoint)
         URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
@@ -32,7 +33,7 @@ struct FlightService: FlightSearchService {
         }.resume()
     }
     
-    
+    //private method for readability and clarity
     private func marshalJSON<T: Codable>(data: Data?) -> T?  {
         guard let data = data else { return nil }
         do {

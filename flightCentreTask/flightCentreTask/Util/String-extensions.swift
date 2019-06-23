@@ -15,7 +15,7 @@ enum TimeFormat: String {
     case twentyFourHourTime = "HH:mm"
     case yearMonthDay = "yyyy-MM-dd"
 }
-
+//
 extension String {
     
     func displayDateString(for format: TimeFormat) -> String? {
