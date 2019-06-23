@@ -20,12 +20,18 @@ class FlightTableViewCell: UITableViewCell {
     @IBOutlet weak var arrivalDetails: FlightPoint!
     @IBOutlet weak var blueDashedLine: DashView!
     
+    @IBOutlet weak var leftCircle: UIView!
+    @IBOutlet weak var rightCircle: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         planeImage.image = planeImage.image?.withRenderingMode(.alwaysTemplate)
         planeImage.tintColor = Constants.Colors.flightCentreBlue
         backgroundColor = Constants.Colors.tableViewBackgroundGrey
+        
+        leftCircle.addCircle(with: Constants.Colors.flightCentreBlue)
+        rightCircle.addCircle(with: Constants.Colors.flightCentreBlue)
     }
         
     func update(with flight: Flight) {
